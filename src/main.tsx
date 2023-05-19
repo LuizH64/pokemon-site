@@ -7,10 +7,12 @@ import { BrowserRouter } from 'react-router-dom';
 import { MainRoutes } from './Routes';
 
 import './index.css';
+import { Header } from './components/Header/intex';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <BrowserRouter>
+      <Header />
       <MainRoutes />
     </BrowserRouter>
   </React.StrictMode>,

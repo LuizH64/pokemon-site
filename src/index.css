@@ -1,3 +1,43 @@
+:root {
+  --primary: #F2B807;
+  --second: #F28F16;
+  --third: #F5DB13;
+  --danger: #D93E30;
+  --white: #F2F2F2;
+  --dark: #212121;
+  --pokemon-stile: #A1A1A1;
+  --pokemon-dark: #A1A1A1;
+  --pokemon-rock: #A1A1A1;
+  --pokemon-grass: #70A83B;
+  --pokemon-bug: #70A83B;
+  --pokemon-water: #76AADB;
+  --pokemon-ice: #76AADB;
+  --pokemon-fire: #F76545;
+  --pokemon-fighting: #F76545;
+  --pokemon-dragon: #F76545;
+  --pokemon-normal: #76AADB;
+  --pokemon-gosth: #76AADB;
+  --pokemon-poison: #A974BC;
+  --pokemon-psychic: #A974BC;
+  --pokemon-fairy: #A974BC;
+  --pokemon-ghost: #A974BC;
+  --pokemon-ground: #9B897B;
+  --pokemon-eletric: #F7C545;
+  --margin-1: 120px;
+  --margin-2: 96px;
+  --margin-3: 80px;
+  --margin-4: 64px;
+  --margin-5: 32px;
+  --box-shadow: 4px 4px 16px rgba(1, 28, 64, 0.2);
+  --shadow-filter-1: drop-shadow(4px 4px 24px rgba(1, 17, 38, 0.2));
+  --shadow-filter-2: drop-shadow(4px 4px 20px rgba(1, 28, 64, 0.2));
+  --shadow-filter-3: drop-shadow(0px 4px 14px rgba(0, 0, 0, 0.2));
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   min-width: 320px;
