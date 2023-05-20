@@ -50,7 +50,21 @@ body {
   min-width: 320px;
   min-height: 100vh;
 
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Karla', sans-serif;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
 }
 
 h1 {
@@ -75,8 +89,4 @@ h5 {
 
 h6 {
   font-size: 12px;
-}
-
-p {
-  font-size: 16px;
 }

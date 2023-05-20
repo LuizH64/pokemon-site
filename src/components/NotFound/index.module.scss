@@ -1,0 +1,79 @@
+@use "../../configs/global-variables"as g;
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 75px;
+
+    min-height: 100vh;
+    overflow: hidden;
+
+    background-color: var(--danger);
+
+    @media (g.$tablet) {
+        gap: 32px;
+    }
+
+    @media (g.$desktop) {
+        gap: 62px;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+
+        @media (g.$tablet) {
+            gap: 16px;
+        }
+
+        @media (g.$desktop) {
+            gap: 14px;
+        }
+
+        .textWrapper {
+            font-size: 25px;
+            line-height: 29px;
+            font-weight: 700;
+            text-align: center;
+
+            @media (g.$tablet) {
+                font-size: 45px;
+                line-height: 53px;
+            }
+
+            @media (g.$desktop) {
+                display: flex;
+                justify-content: center;
+                gap: 8px;
+                font-size: 48px;
+                line-height: 56px;
+            }
+
+            .light {
+                opacity: 0;
+                animation: showUp .5s 1.2s forwards;
+                color: var(--white);
+            }
+
+            .dark {
+                opacity: 0;
+                animation: showUp .8s 1.8s forwards;
+                color: #000;
+            }
+        }
+    }
+}
+
+
+@keyframes showUp {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
