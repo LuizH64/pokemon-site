@@ -1,0 +1,21 @@
+.redirectButton {
+  display: block;
+  width: 312px;
+  padding-top: 12px;
+  padding-bottom: 16px;
+  border-radius: 11px;
+  background-color: #73D677;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--dark);
+  box-shadow: inset 0px -9px 0px rgba(0, 0, 0, 0.18);
+}
+@media (min-width: 768px) {
+  .redirectButton {
+    width: 231px;
+    padding-top: 17px;
+    padding-bottom: 17px;
+    font-size: 23px;
+  }
+}
