@@ -1,0 +1,51 @@
+.mobileTitle,
+.tabletTitle,
+.desktopTitle {
+  text-align: center;
+  font-weight: 400;
+  letter-spacing: 3px;
+}
+.mobileTitle strong,
+.tabletTitle strong,
+.desktopTitle strong {
+  font-weight: 700;
+}
+
+.mobileTitle {
+  font-size: 24px;
+  line-height: 28px;
+  margin-bottom: 29px;
+}
+@media (min-width: 768px) {
+  .mobileTitle {
+    display: none;
+  }
+}
+
+.tabletTitle {
+  font-size: 35px;
+  line-height: 41px;
+  margin-bottom: 20px;
+}
+@media (max-width: 767px) {
+  .tabletTitle {
+    display: none;
+  }
+}
+@media (min-width: 1440px) {
+  .tabletTitle {
+    display: none;
+  }
+}
+
+.desktopTitle {
+  display: none;
+  font-size: 35px;
+  line-height: 41px;
+  margin-bottom: 34px;
+}
+@media (min-width: 1440px) {
+  .desktopTitle {
+    display: block;
+  }
+}

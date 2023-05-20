@@ -1,0 +1,48 @@
+@use "../../../../configs/global-variables"as g;
+
+.mobileTitle,
+.tabletTitle,
+.desktopTitle {
+    text-align: center;
+    font-weight: 400;
+    letter-spacing: 3px;
+
+    strong {
+        font-weight: 700;
+    }
+}
+
+.mobileTitle {
+    font-size: 24px;
+    line-height: 28px;
+    margin-bottom: 29px;
+
+    @media (g.$tablet) {
+        display: none;
+    }
+}
+
+.tabletTitle {
+    font-size: 35px;
+    line-height: 41px;
+    margin-bottom: 20px;
+
+    @media (g.$mobile) {
+        display: none;
+    }
+
+    @media (g.$desktop) {
+        display: none;
+    }
+}
+
+.desktopTitle {
+    display: none;
+    font-size: 35px;
+    line-height: 41px;
+    margin-bottom: 34px;
+
+    @media (g.$desktop) {
+        display: block;
+    }
+}
