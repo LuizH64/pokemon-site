@@ -1,0 +1,50 @@
+.navbar {
+  position: sticky;
+  display: flex;
+  justify-content: space-between;
+  top: 0;
+  width: 100%;
+  height: 56px;
+  background-color: var(--third);
+  padding: 0 26px;
+  padding-top: 22px;
+}
+@media (min-width: 768px) {
+  .navbar {
+    height: 93px;
+    padding: 0 20px;
+    padding-top: 24px;
+  }
+}
+@media (min-width: 980px) {
+  .navbar {
+    height: 93px;
+    padding: 0 157px;
+    padding-top: 23px;
+  }
+}
+.navbar .logo {
+  width: 58px;
+  height: 22px;
+}
+@media (min-width: 768px) {
+  .navbar .logo {
+    width: 121px;
+    height: 45px;
+  }
+}
+@media (min-width: 980px) {
+  .navbar .logo {
+    width: 157px;
+    height: 63px;
+  }
+}
+.navbar .hamburgerIcon {
+  width: 31px;
+  height: 22px;
+}
+@media (min-width: 768px) {
+  .navbar .hamburgerIcon {
+    display: none;
+  }
+}

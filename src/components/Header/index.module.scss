@@ -1,0 +1,49 @@
+@use "../../configs/global-variables" as g;
+
+.navbar {
+    position: sticky;
+    display: flex;
+    justify-content: space-between;
+    top: 0;
+    width: 100%;
+    height: 56px;
+    background-color: var(--third);
+    padding: 0 26px;
+    padding-top: 22px;
+
+    @media (g.$tablet) {
+        height: 93px;
+        padding: 0 20px;
+        padding-top: 24px;
+    }
+
+    @media (g.$desktop) {
+        height: 93px;
+        padding: 0 157px;
+        padding-top: 23px;
+    }
+
+    .logo {
+        width: 58px;
+        height: 22px;
+
+        @media (g.$tablet) {
+            width: 121px;
+            height: 45px;
+        }
+
+        @media (g.$desktop) {
+            width: 157px;
+            height: 63px;
+        }
+    }
+
+    .hamburgerIcon {
+        width: 31px;
+        height: 22px;
+
+        @media (g.$tablet) {
+            display: none;
+        }
+    }
+}

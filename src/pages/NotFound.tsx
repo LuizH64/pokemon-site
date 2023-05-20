@@ -1,8 +1,10 @@
+// Components
+import { NotFound } from "../components/NotFound";
 
-const NotFound = () => {
+const NotFoundPage = () => {
     return (
-        <h1>Not Found</h1>
+        <NotFound />
     );
 };
 
-export { NotFound };
+export { NotFoundPage };

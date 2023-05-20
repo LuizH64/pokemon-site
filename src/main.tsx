@@ -6,6 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 // Components
 import { MainRoutes } from './Routes';
 
+// Styles
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
