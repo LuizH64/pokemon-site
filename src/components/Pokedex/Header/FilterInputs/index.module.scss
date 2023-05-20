@@ -1,0 +1,14 @@
+@use "../../../../configs/global-variables"as g;
+
+.filtersWrapper {
+    width: 322px;
+    margin: 0 auto;
+
+    @media (g.$tablet) {
+        width: 695px;
+    }
+
+    @media (g.$desktop) {
+        width: 1088px;
+    }
+}
