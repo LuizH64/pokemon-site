@@ -8,6 +8,7 @@
 
     @media (g.$tablet) {
         min-height: calc(100vh - 93px);
+        overflow-x: hidden;
     }
 
     @media (g.$desktop) {

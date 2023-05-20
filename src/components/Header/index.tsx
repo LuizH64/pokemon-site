@@ -1,3 +1,10 @@
+// Dependencies
+import { useState } from 'react';
+
+// Components
+import { Backdrop } from '../UI/Backdrop';
+import { NavigationLinks } from './NavigationLinks';
+
 // Styles
 import styles from './index.module.css';
 
@@ -6,12 +13,28 @@ import logo from "../../assets/logo.svg";
 import hamburgerIcon from "../../assets/hamburger-icon.svg";
 
 const Header = () => {
-    return (
-        <nav className={styles.navbar}>
-            <img src={logo} className={styles.logo} alt="Pokémon" />
+    const [expandHeader, setExpandHeader] = useState<boolean>(false);
 
-            <img src={hamburgerIcon} className={styles.hamburgerIcon} alt="Open navigation" />
-        </nav>
+    const toggleHeader = (): void => {
+        setExpandHeader(prevExpandHeader => !prevExpandHeader);
+    };
+
+    return (
+        <>
+            <nav className={expandHeader ? styles.expandedNavbar : styles.navbar}>
+                <img src={logo} className={styles.logo} alt="Pokémon" />
+
+                <NavigationLinks active={expandHeader} />
+
+                <button className={styles.hamburgerButton} onClick={toggleHeader}>
+                    <img src={hamburgerIcon} className={styles.hamburgerIcon} alt="Open navigation" />
+                </button>
+            </nav>
+
+            <div className={styles.navbarHeight}></div>
+            
+            {expandHeader && <Backdrop onClick={toggleHeader} />}
+        </>
     )
 };
 
