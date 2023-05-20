@@ -1,0 +1,60 @@
+@use "../../../configs/global-variables"as g;
+
+.unorderedList,
+.activeUnorderedList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    @media (g.$mobile) {
+        display: none;
+    }
+
+    @media (g.$tablet) {
+        flex-direction: row;
+        gap: 43px;
+        transform: translateY(-30%);
+    }
+
+    @media (g.$desktop) {
+        gap: 72px;
+        transform: translateY(-30%);
+    }
+
+    .navLink,
+    .navLinkActive {
+        font-size: 27px;
+        font-weight: 400;
+        color: #000;
+        cursor: pointer;
+
+        @media (g.$tablet) {
+            padding-bottom: 23px;
+            font-size: 19px;
+        }
+
+        @media (g.$desktop) {
+            padding-bottom: 23px;
+            font-size: 25px;
+        }
+    }
+
+    .navLinkActive {
+        @media (g.$mobile) {
+            text-decoration: underline;
+        }
+
+        @media (g.$tablet) {
+            border-bottom: 3px solid #000;
+        }
+    }
+}
+
+.activeUnorderedList {
+    display: flex;
+}
