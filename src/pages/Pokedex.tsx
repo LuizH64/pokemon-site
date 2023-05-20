@@ -1,5 +1,5 @@
 // Components
-import { Header } from "../components/Header";
+import { Navbar } from "../components/Navbar";
 import { Pokedex } from "../components/Pokedex";
 import { FilterModal } from "../components/Pokedex/FilterModal";
 
@@ -10,7 +10,7 @@ import PokedexProvider from "../contexts/Pokedex";
 const PokedexPage = () => {
     return (
         <PokedexProvider>
-            <Header />
+            <Navbar />
             <FilterModal />
             <Pokedex />
         </PokedexProvider>
