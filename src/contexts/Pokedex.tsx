@@ -18,7 +18,8 @@ interface PokedexContextType {
     toggleTypesFilter: (updatedType: string) => void,
     loadMorePokemon: () => void,
     typesFilter: string[],
-    isLoading: boolean
+    isLoading: boolean,
+    searchName: (search: string) => void
 }
 
 interface PokedexProviderProps {
@@ -35,7 +36,8 @@ const defaultValues: PokedexContextType = {
     toggleTypesFilter: () => { },
     loadMorePokemon: () => { },
     typesFilter: [],
-    isLoading: false
+    isLoading: false,
+    searchName: () => { }
 }
 
 
@@ -219,6 +221,36 @@ const PokedexProvider = ({ children }: PokedexProviderProps) => {
         await loadNotLoadedPokemon();
     }
 
+    const searchName = async (search: string): Promise<void> => {
+        setIsLoading(true);
+
+        typesFilter = [];
+        notLoadedPokemon = [];
+        lastUrl = null;
+        nextUrl = nextUrlInitialValue;
+
+        search = search.trim().toLowerCase();
+        
+        if (!search) {
+            setPokemons([]);
+            fetchPokemons();
+            return;
+        }
+
+        try {
+            const pokemonData = (await axiosInstance.get<PokemonResponse>(`pokemon/${search}`)).data;    
+            const specieData = (await axiosInstance.get<PokemonSpecieResponse>(`pokemon-species/${search}`)).data;
+    
+            const pokemon = formatPokemonData({ specieData, pokemonData });
+    
+            setPokemons([pokemon]);
+        } catch (err) {
+            setPokemons([]);
+        } finally {
+            setIsLoading(false);
+        }
+    }
+
     // Fetch pokemon types
     useEffect(() => {
         if (typesFetched) return;
@@ -247,7 +279,8 @@ const PokedexProvider = ({ children }: PokedexProviderProps) => {
             toggleTypesFilter,
             loadMorePokemon,
             typesFilter,
-            isLoading
+            isLoading,
+            searchName
         }}>
             {children}
         </PokedexContex.Provider>
