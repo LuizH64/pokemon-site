@@ -11,7 +11,7 @@ const NoResultsFound = () => {
 
             <img src={detectivePikachuImage} className={styles.image} alt="" />
 
-            <p className={styles.text}>No pokemon were found.</p>
+            <p className={styles.text}>No pokemon found</p>
         </section>
     );
 };
