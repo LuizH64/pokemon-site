@@ -8,7 +8,7 @@ import { FilterMenu } from './FilterMenu';
 import styles from './index.module.css';
 
 const FilterDropdown = () => {
-    const [showMenu, setShowMenu] = useState<boolean>(true);
+    const [showMenu, setShowMenu] = useState<boolean>(false);
 
     const toggleShowMenu = (): void => {
         setShowMenu(prevShowMenu => !prevShowMenu);
