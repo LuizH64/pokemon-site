@@ -1,4 +1,5 @@
 // Components
+import { FilterDropdown } from "./FilterDropdown";
 import { MobileFilterButton } from "./MobileFilterButton";
 
 // Styles
@@ -8,7 +9,7 @@ const FilterInputs = () => {
     return (
         <section className={styles.filtersWrapper}>
             <MobileFilterButton />
-
+            <FilterDropdown />
         </section>
     );
 };
