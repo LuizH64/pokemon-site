@@ -30,26 +30,32 @@ const PokemonModal = () => {
                 <header className={styles.header}>
                     <CloseButton />
 
-                    <h1 className={styles.pokemonName}>{pokemonInModal.name}</h1>
+                    <h1 className={styles.pokemonNameMobile}>{pokemonInModal.name}</h1>
 
                     <div className={styles.pokemonImage}>
                         <img src={pokemonInModal.image} alt="" />
                     </div>
+
+                    <div className={styles.pokemonTypesDesktop}>
+                        {pokemonInModal.types.map(type => <PokemonTypePill key={type} type={type} />)}
+                    </div>
                 </header>
 
-                <section className={styles.body} style={{background: getGradientByType(pokemonInModal.types[0])}}>
+                <section className={styles.body} style={{ background: getGradientByType(pokemonInModal.types[0]) }}>
                     <div className={styles.mainInfo}>
+                        <h1 className={styles.pokemonNameDesktop}>{pokemonInModal.name}</h1>
+
                         <div className={styles.idAndGeneration}>
                             <div className={styles.id}>{pokemonInModal.id}</div>
                             <div className={styles.generation}>{pokemonInModal.generation}</div>
                         </div>
 
-                        <div className={styles.pokemonTypes}>
+                        <div className={styles.pokemonTypesMobile}>
                             {pokemonInModal.types.map(type => <PokemonTypePill key={type} type={type} />)}
                         </div>
                     </div>
 
-                    <section className={styles.card}>
+                    <section className={styles.cardAbilities}>
                         <h2 className={styles.abilitiesTitle}>Abilities</h2>
 
                         <div className={styles.abilitiesList}>
@@ -61,7 +67,7 @@ const PokemonModal = () => {
                         </div>
                     </section>
 
-                    <section className={styles.card}>
+                    <section className={styles.cardStats}>
                         <PokemonStatBar
                             name="Health Points"
                             value={Number(pokemonInModal.stats.hp)}
