@@ -19,10 +19,10 @@ const POKEMONS_TYPES = [
     "electric"
 ]
 
-const getColorByType = (type: string) => {
-    if (!POKEMONS_TYPES.includes(type)) return `var(--pokemon-normal)`;
+const getGradientByType = (type: string) => {
+    if (!POKEMONS_TYPES.includes(type)) return `var(--pokemon-gadient-normal)`;
 
-    return `var(--pokemon-${type})`
+    return `var(--pokemon-gradient-${type})`
 }
 
-export { getColorByType };
+export { getGradientByType };

@@ -1,16 +1,28 @@
+// Components
+import { PokemonTypePill } from "../../../UI/PokemonTypePill";
+
 // Types
 import { Pokemon } from "../../../../models/Pokemon";
-
-// Styles
-import styles from "./index.module.css";
 
 // Helpers
 import { getColorByType } from "../../../../helpers/getColorByType";
 
+// Hooks
+import { usePokedex } from "../../../../hooks/contexts/usePokedex";
+
+// Styles
+import styles from "./index.module.css";
+
 
 const PokemonCard = ({ pokemon }: { pokemon: Pokemon }) => {
+    const { setPokemonInModal } = usePokedex();
+
+    const onClickHander = () => {
+        setPokemonInModal(pokemon);
+    }
+
     return (
-        <li className={styles.card}>
+        <li className={styles.card} onClick={onClickHander}>
             <div className={styles.info}>
                 <p className={styles.name}>{pokemon.name}</p>
 
@@ -28,7 +40,7 @@ const PokemonCard = ({ pokemon }: { pokemon: Pokemon }) => {
 
                 <section className={styles.types}>
                     {pokemon.types.map(type => (
-                        <p key={type} className={styles.type} style={{ backgroundColor: getColorByType(type) }}>{type}</p>
+                        <PokemonTypePill key={type} type={type} />
                     ))}
                 </section>
             </div>

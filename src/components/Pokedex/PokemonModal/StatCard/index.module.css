@@ -1,0 +1,26 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  width: 82px;
+  height: 69px;
+  border-radius: 8px;
+  background-color: #FDFDFD;
+  box-shadow: 4px 4px 24px rgba(1, 17, 38, 0.2);
+}
+.card .name {
+  font-size: 11px;
+  font-weight: 400;
+}
+.card .value {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  border: 3px solid var(--dark);
+  border-radius: 50%;
+  font-size: 18px;
+}

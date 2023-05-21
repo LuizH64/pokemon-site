@@ -14,7 +14,9 @@ export interface PokedexContextType {
     loadMorePokemon: () => void,
     typesFilter: string[],
     isLoading: boolean,
-    searchName: (search: string) => void
+    searchName: (search: string) => void,
+    pokemonInModal: Pokemon | null,
+    setPokemonInModal: React.Dispatch<SetStateAction<Pokemon | null>>,
 }
 
 export interface PokedexProviderProps {

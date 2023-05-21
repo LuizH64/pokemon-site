@@ -34,7 +34,9 @@ export interface PokemonResponse {
 export interface PokemonSpecieResponse {
     id: number,
     name: string,
-    generation: string,
+    generation: {
+        name: string
+    },
     varieties: {
         pokemon: {
             url: string

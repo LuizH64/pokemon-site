@@ -1,0 +1,116 @@
+.modal {
+    position: fixed;
+    top: 0;
+
+    width: 100%;
+    height: 100vh;
+    z-index: 11;
+
+    padding-top: 56px;
+    padding-bottom: 30px;
+
+    border-radius: 16px;
+
+    .pokemonName {
+        text-align: center;
+
+        font-size: 36px;
+        font-weight: 700;
+        color: var(--white);
+        text-transform: capitalize;
+    }
+
+    .pokemonImage {
+        text-align: center;
+        overflow: hidden;
+
+        img {
+            height: 277px;
+        }
+    }
+
+    .body {
+        height: -webkit-fill-available;
+
+        margin-top: -100px;
+        padding: 0 12px;
+        padding-top: 75px;
+
+        border-radius: 16px;
+
+        background-color: red;
+
+        .mainInfo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 0;
+
+            .idAndGeneration {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+
+                .id {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    border-radius: 50%;
+
+                    width: 41px;
+                    height: 41px;
+
+                    background-color: var(--primary);
+
+                    font-size: 16px;
+                    font-weight: 400;
+                }
+
+                .generation {
+                    font-size: 16px;
+                    font-weight: 400;
+                    font-family: 'Source Sans Pro', sans-serif;
+                    text-transform: capitalize;
+                    color: var(--white);
+                }
+            }
+
+            .pokemonTypes {
+                display: flex;
+                gap: 16px;
+            }
+        }
+
+        .card {
+            margin: 15px 0;
+            padding: 18px 21px;
+
+            border-radius: 8px;
+
+            background-color: #fdfdfd;
+            box-shadow: 4px 4px 4px rgba(33, 33, 33, 0.1);
+        }
+
+        .abilitiesTitle {
+            margin-bottom: 9px;
+
+            font-size: 31px;
+            font-weight: 400;
+        }
+
+        .abilitiesList {
+            span {
+                text-transform: capitalize;
+                font-size: 16px;
+                font-weight: 400;
+            }
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}

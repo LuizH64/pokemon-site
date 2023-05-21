@@ -15,6 +15,11 @@
   font-family: "Source Sans Pro", sans-serif;
   cursor: pointer;
 }
+@media (max-width: 767px) {
+  .buttonWrapper .button {
+    display: none;
+  }
+}
 .buttonWrapper .button::after {
   content: "^";
   position: absolute;

@@ -3,5 +3,5 @@
   inset: 0;
   background: var(--dark);
   opacity: 0.5;
-  z-index: 7;
+  z-index: 10;
 }

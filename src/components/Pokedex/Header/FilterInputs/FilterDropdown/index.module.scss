@@ -22,6 +22,10 @@
 
         cursor: pointer;
 
+        @media (g.$mobile) {
+            display: none;
+        }
+
         &::after {
             content: '^';
             position: absolute;

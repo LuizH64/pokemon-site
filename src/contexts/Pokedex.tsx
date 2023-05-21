@@ -21,7 +21,9 @@ const defaultValues: PokedexContextType = {
     loadMorePokemon: () => { },
     typesFilter: [],
     isLoading: false,
-    searchName: () => { }
+    searchName: () => { },
+    pokemonInModal: null,
+    setPokemonInModal: () => { }
 }
 
 export const PokedexContex = createContext(defaultValues);
@@ -49,7 +51,7 @@ const formatPokemonData = ({ specieData, pokemonData }: FormatPokemonDataTypes):
         types,
         abilities,
         image: pokemonData.sprites.other["official-artwork"].front_default,
-        generation: specieData.generation,
+        generation: specieData.generation.name,
         order: pokemonData.order,
         stats: {
             attack,
@@ -92,6 +94,7 @@ let typesFilter: string[] = [];
 
 const PokedexProvider = ({ children }: PokedexProviderProps) => {
     const [showFilterModal, setShowFilterModal] = useState<boolean>(false);
+    const [pokemonInModal, setPokemonInModal] = useState<Pokemon | null>(null);
 
     const [pokemonsCount, setPokemonsCount] = useState<number | null>(null);
     const [pokemons, setPokemons] = useState<Pokemon[]>([]);
@@ -207,7 +210,7 @@ const PokedexProvider = ({ children }: PokedexProviderProps) => {
         nextUrl = nextUrlInitialValue;
 
         search = search.trim().toLowerCase();
-        
+
         if (!search) {
             setPokemons([]);
             fetchPokemons();
@@ -215,11 +218,11 @@ const PokedexProvider = ({ children }: PokedexProviderProps) => {
         }
 
         try {
-            const pokemonData = (await axiosInstance.get<PokemonResponse>(`pokemon/${search}`)).data;    
+            const pokemonData = (await axiosInstance.get<PokemonResponse>(`pokemon/${search}`)).data;
             const specieData = (await axiosInstance.get<PokemonSpecieResponse>(`pokemon-species/${search}`)).data;
-    
+
             const pokemon = formatPokemonData({ specieData, pokemonData });
-    
+
             setPokemons([pokemon]);
         } catch (err) {
             setPokemons([]);
@@ -257,7 +260,9 @@ const PokedexProvider = ({ children }: PokedexProviderProps) => {
             loadMorePokemon,
             typesFilter,
             isLoading,
-            searchName
+            searchName,
+            pokemonInModal,
+            setPokemonInModal,
         }}>
             {children}
         </PokedexContex.Provider>
