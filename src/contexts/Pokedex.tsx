@@ -1,30 +1,14 @@
 // Dependencies
 import axios from "axios";
 import axiosInstance from "../configs/axios";
-import { SetStateAction, createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 // Types
 import { PokemonType, PokemonTypesResponse, PokemonsByType } from "../models/PokemonTypes";
 import { Pokemon, PokemonResponse, PokemonResult, PokemonSpecieResponse, PokemonsResponse } from "../models/Pokemon";
+import { FormatPokemonDataTypes, PokedexContextType, PokedexProviderProps } from "../models/Pokedex";
 
 
-interface PokedexContextType {
-    showFilterModal: boolean,
-    setShowFilterModal: React.Dispatch<SetStateAction<boolean>>,
-    pokemonTypes: PokemonType[],
-    pokemons: Pokemon[],
-    pokemonsCount: number | null,
-    limit: number,
-    toggleTypesFilter: (updatedType: string) => void,
-    loadMorePokemon: () => void,
-    typesFilter: string[],
-    isLoading: boolean,
-    searchName: (search: string) => void
-}
-
-interface PokedexProviderProps {
-    children: React.ReactNode
-}
 
 const defaultValues: PokedexContextType = {
     showFilterModal: false,
@@ -40,13 +24,7 @@ const defaultValues: PokedexContextType = {
     searchName: () => { }
 }
 
-
 export const PokedexContex = createContext(defaultValues);
-
-interface FormatPokemonDataTypes {
-    specieData: PokemonSpecieResponse
-    pokemonData: PokemonResponse
-}
 
 const formatPokemonData = ({ specieData, pokemonData }: FormatPokemonDataTypes): Pokemon => {
     const abilities = pokemonData.abilities.map(ability => ability.ability.name);
@@ -99,7 +77,6 @@ const fetchPokemon = async (url: string): Promise<Pokemon> => {
     const pokemon = formatPokemonData({ specieData, pokemonData });
     return pokemon;
 }
-
 
 const limit = 12;
 const nextUrlInitialValue = `https://pokeapi.co/api/v2/pokemon-species?limit=${limit}`;
