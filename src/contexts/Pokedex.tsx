@@ -64,8 +64,8 @@ const formatPokemonData = ({ specieData, pokemonData }: FormatPokemonDataTypes):
     const experience = pokemonData.base_experience;
 
     return {
-        id: specieData.id,
-        name: specieData.name,
+        id: pokemonData.id,
+        name: pokemonData.name,
         types,
         abilities,
         image: pokemonData.sprites.other["official-artwork"].front_default,
@@ -147,51 +147,47 @@ const PokedexProvider = ({ children }: PokedexProviderProps) => {
         setIsLoading(true);
 
         let i = 0;
+
         while (i < limit && notLoadedPokemon.length) {
             try {
                 const newPokemon = await fetchPokemon(notLoadedPokemon[i].url);
                 newPokemonList.push(newPokemon);
-                notLoadedPokemon.splice(i, 1);
-                i++;
             } catch (err) {
                 console.error(err);
-                notLoadedPokemon.splice(i, 1);
+            } finally {
                 i++;
             }
         }
+
+        notLoadedPokemon.splice(0, i);
 
         setPokemons(prevPokemons => [...prevPokemons, ...newPokemonList]);
         setIsLoading(false);
     }
 
     const fetchPokemonByTypes = async (): Promise<void> => {
+        const newNotLoadedPokemon: PokemonResult[] = []
         for (const type of typesFilter) {
             const { pokemon } = (await axiosInstance.get<PokemonsByType>(`type/${type}`)).data;
 
             for (const p of pokemon) {
-                notLoadedPokemon.push({
-                    name: p.pokemon.name,
-                    url: p.pokemon.url
-                })
+                const newPokemon = { name: p.pokemon.name, url: p.pokemon.url };
+
+                if (newNotLoadedPokemon.map(nl => nl.name).includes(newPokemon.name))
+                    continue;
+
+                newNotLoadedPokemon.push(newPokemon);
             }
         }
 
-        notLoadedPokemon = Array.from(new Set(notLoadedPokemon));
+        newNotLoadedPokemon.sort((a, b) => {
+            const idA = Number(a.url.replace("https://pokeapi.co/api/v2/pokemon/", "").replace("/", ""));
+            const idB = Number(b.url.replace("https://pokeapi.co/api/v2/pokemon/", "").replace("/", ""));
 
-        notLoadedPokemon.sort(function (a, b) {
-            var nomeA = a.name.toUpperCase();
-            var nomeB = b.name.toUpperCase();
-
-            if (nomeA < nomeB) {
-                return -1;
-            }
-
-            if (nomeA > nomeB) {
-                return 1;
-            }
-
-            return 0;
+            return idA - idB;
         });
+
+        notLoadedPokemon = [...newNotLoadedPokemon];
     }
 
     const loadMorePokemon = () => {
