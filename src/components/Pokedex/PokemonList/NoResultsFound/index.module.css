@@ -1,0 +1,28 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 337px;
+  margin: 0 auto;
+  overflow-x: hidden;
+  color: #a9a9a9;
+}
+@media (min-width: 768px) {
+  .wrapper {
+    width: 500px;
+  }
+}
+.wrapper .title {
+  font-size: 50px;
+}
+.wrapper .image {
+  width: 70%;
+  filter: grayscale(80%);
+  opacity: 0.9;
+}
+.wrapper .text {
+  font-size: 26px;
+  font-weight: 600;
+}

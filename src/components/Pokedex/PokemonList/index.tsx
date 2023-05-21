@@ -3,6 +3,7 @@ import { useEffect } from "react";
 
 // Components
 import { PokemonCard } from "./PokemonCard";
+import { NoResultsFound } from "./NoResultsFound";
 
 // Hooks
 import { usePokedex } from "../../../hooks/contexts/usePokedex";
@@ -11,7 +12,7 @@ import { usePokedex } from "../../../hooks/contexts/usePokedex";
 import styles from "./index.module.css";
 
 const PokemonList = () => {
-    const { pokemons, loadMorePokemon } = usePokedex();
+    const { pokemons, loadMorePokemon, isLoading } = usePokedex();
 
     // Verify if user scrolled to end of page
     useEffect(() => {
@@ -28,13 +29,13 @@ const PokemonList = () => {
         };
     }, []);
 
-    return (
+    return !pokemons.length && !isLoading ? <NoResultsFound /> : (
         <ul className={styles.list}>
             {pokemons.map(pokemon => (
                 <PokemonCard key={pokemon.id} pokemon={pokemon} />
             ))}
         </ul>
-    );
+        );
 };
 
-export { PokemonList };
+        export {PokemonList};
