@@ -17,7 +17,8 @@ interface PokedexContextType {
     limit: number,
     toggleTypesFilter: (updatedType: string) => void,
     loadMorePokemon: () => void,
-    typesFilter: string[]
+    typesFilter: string[],
+    isLoading: boolean
 }
 
 interface PokedexProviderProps {
@@ -33,7 +34,8 @@ const defaultValues: PokedexContextType = {
     limit: 12,
     toggleTypesFilter: () => { },
     loadMorePokemon: () => { },
-    typesFilter: []
+    typesFilter: [],
+    isLoading: false
 }
 
 
@@ -109,19 +111,19 @@ let nextUrl: string | null = nextUrlInitialValue;
 let notLoadedPokemon: PokemonResult[] = [];
 let typesFilter: string[] = [];
 
-let isLoading = false;
-
 const PokedexProvider = ({ children }: PokedexProviderProps) => {
     const [showFilterModal, setShowFilterModal] = useState<boolean>(false);
 
     const [pokemonsCount, setPokemonsCount] = useState<number | null>(null);
     const [pokemons, setPokemons] = useState<Pokemon[]>([]);
 
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+
     const fetchPokemons = async (): Promise<void> => {
         if (lastUrl === nextUrl) return;
         if (!nextUrl) return;
 
-        isLoading = true;
+        setIsLoading(true);
         lastUrl = nextUrl;
 
         const { data } = await axios.get<PokemonsResponse>(nextUrl);
@@ -137,12 +139,12 @@ const PokedexProvider = ({ children }: PokedexProviderProps) => {
         }
 
         setPokemons(prevPokemons => [...prevPokemons, ...newPokemonList]);
-        isLoading = false;
+        setIsLoading(false);
     }
 
     const loadNotLoadedPokemon = async (): Promise<void> => {
         const newPokemonList: Pokemon[] = [];
-        isLoading = true;
+        setIsLoading(true);
 
         let i = 0;
         while (i < limit && notLoadedPokemon.length) {
@@ -159,7 +161,7 @@ const PokedexProvider = ({ children }: PokedexProviderProps) => {
         }
 
         setPokemons(prevPokemons => [...prevPokemons, ...newPokemonList]);
-        isLoading = false;
+        setIsLoading(false);
     }
 
     const fetchPokemonByTypes = async (): Promise<void> => {
@@ -248,7 +250,8 @@ const PokedexProvider = ({ children }: PokedexProviderProps) => {
             limit,
             toggleTypesFilter,
             loadMorePokemon,
-            typesFilter
+            typesFilter,
+            isLoading
         }}>
             {children}
         </PokedexContex.Provider>
