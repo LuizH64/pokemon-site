@@ -9,11 +9,14 @@ import PokedexProvider from "../contexts/Pokedex";
 
 const PokedexPage = () => {
     return (
-        <PokedexProvider>
+        <>
             <Navbar />
-            <FilterModal />
-            <Pokedex />
-        </PokedexProvider>
+
+            <PokedexProvider>
+                <FilterModal />
+                <Pokedex />
+            </PokedexProvider>
+        </>
     );
 };
 

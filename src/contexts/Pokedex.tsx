@@ -4,8 +4,8 @@ import axiosInstance from "../configs/axios";
 import { SetStateAction, createContext, useEffect, useState } from "react";
 
 // Types
-import { PokemonType, PokemonTypesResponse } from "../models/PokemonTypes";
-import { Pokemon, PokemonResponse, PokemonSpecieResponse, PokemonsResponse } from "../models/Pokemon";
+import { PokemonType, PokemonTypesResponse, PokemonsByType } from "../models/PokemonTypes";
+import { Pokemon, PokemonResponse, PokemonResult, PokemonSpecieResponse, PokemonsResponse } from "../models/Pokemon";
 
 
 interface PokedexContextType {
@@ -13,10 +13,11 @@ interface PokedexContextType {
     setShowFilterModal: React.Dispatch<SetStateAction<boolean>>,
     pokemonTypes: PokemonType[],
     pokemons: Pokemon[],
-    offset: number,
-    setOffset: React.Dispatch<SetStateAction<number>>,
-    hasNext: boolean,
-    pokemonsCount: number | null
+    pokemonsCount: number | null,
+    limit: number,
+    toggleTypesFilter: (updatedType: string) => void,
+    loadMorePokemon: () => void,
+    typesFilter: string[]
 }
 
 interface PokedexProviderProps {
@@ -28,21 +29,22 @@ const defaultValues: PokedexContextType = {
     setShowFilterModal: () => { },
     pokemonTypes: [],
     pokemons: [],
-    offset: 0,
-    setOffset: () => { },
-    hasNext: true,
-    pokemonsCount: null
+    pokemonsCount: null,
+    limit: 12,
+    toggleTypesFilter: () => { },
+    loadMorePokemon: () => { },
+    typesFilter: []
 }
 
 
 export const PokedexContex = createContext(defaultValues);
 
-let pokemonTypes: PokemonType[] = [];
+interface FormatPokemonDataTypes {
+    specieData: PokemonSpecieResponse
+    pokemonData: PokemonResponse
+}
 
-const fetchPokemon = async (url: string): Promise<Pokemon> => {
-    const specieData = (await axios.get<PokemonSpecieResponse>(url)).data;
-    const pokemonData = (await axios.get<PokemonResponse>(specieData.varieties[0].pokemon.url)).data;
-
+const formatPokemonData = ({ specieData, pokemonData }: FormatPokemonDataTypes): Pokemon => {
     const abilities = pokemonData.abilities.map(ability => ability.ability.name);
     const types = pokemonData.types.map(type => type.type.name);
 
@@ -66,6 +68,7 @@ const fetchPokemon = async (url: string): Promise<Pokemon> => {
         abilities,
         image: pokemonData.sprites.other["official-artwork"].front_default,
         generation: specieData.generation,
+        order: pokemonData.order,
         stats: {
             attack,
             hp,
@@ -77,41 +80,163 @@ const fetchPokemon = async (url: string): Promise<Pokemon> => {
     };
 }
 
+const fetchPokemonBySpecie = async (url: string): Promise<Pokemon> => {
+    const specieData = (await axios.get<PokemonSpecieResponse>(url)).data;
+    const pokemonData = (await axios.get<PokemonResponse>(specieData.varieties[0].pokemon.url)).data;
+
+    const pokemon = formatPokemonData({ specieData, pokemonData });
+    return pokemon;
+}
+
+const fetchPokemon = async (url: string): Promise<Pokemon> => {
+    const pokemonData = (await axios.get<PokemonResponse>(url)).data;
+    const specieData = (await axios.get<PokemonSpecieResponse>(pokemonData.species.url)).data;
+
+    const pokemon = formatPokemonData({ specieData, pokemonData });
+    return pokemon;
+}
+
+
+const limit = 12;
+const nextUrlInitialValue = `https://pokeapi.co/api/v2/pokemon-species?limit=${limit}`;
+
+let typesFetched: boolean = false;
+let pokemonTypes: PokemonType[] = [];
+
+let lastUrl: string | null = null;
+let nextUrl: string | null = nextUrlInitialValue;
+
+let notLoadedPokemon: PokemonResult[] = [];
+let typesFilter: string[] = [];
+
+let isLoading = false;
+
 const PokedexProvider = ({ children }: PokedexProviderProps) => {
     const [showFilterModal, setShowFilterModal] = useState<boolean>(false);
-    const [pokemons, setPokemons] = useState<Pokemon[]>([]);
-    const [offset, setOffset] = useState<number>(0);
-    const [hasNext, setHasNext] = useState<boolean>(true);
+
     const [pokemonsCount, setPokemonsCount] = useState<number | null>(null);
+    const [pokemons, setPokemons] = useState<Pokemon[]>([]);
+
+    const fetchPokemons = async (): Promise<void> => {
+        if (lastUrl === nextUrl) return;
+        if (!nextUrl) return;
+
+        isLoading = true;
+        lastUrl = nextUrl;
+
+        const { data } = await axios.get<PokemonsResponse>(nextUrl);
+
+        nextUrl = data.next;
+        setPokemonsCount(data.count);
+
+        const newPokemonList: Pokemon[] = [];
+
+        for (const result of data.results) {
+            const newPokemon = await fetchPokemonBySpecie(result.url);
+            newPokemonList.push(newPokemon);
+        }
+
+        setPokemons(prevPokemons => [...prevPokemons, ...newPokemonList]);
+        isLoading = false;
+    }
+
+    const loadNotLoadedPokemon = async (): Promise<void> => {
+        const newPokemonList: Pokemon[] = [];
+        isLoading = true;
+
+        let i = 0;
+        while (i < limit && notLoadedPokemon.length) {
+            try {
+                const newPokemon = await fetchPokemon(notLoadedPokemon[i].url);
+                newPokemonList.push(newPokemon);
+                notLoadedPokemon.splice(i, 1);
+                i++;
+            } catch (err) {
+                console.error(err);
+                notLoadedPokemon.splice(i, 1);
+                i++;
+            }
+        }
+
+        setPokemons(prevPokemons => [...prevPokemons, ...newPokemonList]);
+        isLoading = false;
+    }
+
+    const fetchPokemonByTypes = async (): Promise<void> => {
+        for (const type of typesFilter) {
+            const { pokemon } = (await axiosInstance.get<PokemonsByType>(`type/${type}`)).data;
+
+            for (const p of pokemon) {
+                notLoadedPokemon.push({
+                    name: p.pokemon.name,
+                    url: p.pokemon.url
+                })
+            }
+        }
+
+        notLoadedPokemon = Array.from(new Set(notLoadedPokemon));
+
+        notLoadedPokemon.sort(function (a, b) {
+            var nomeA = a.name.toUpperCase();
+            var nomeB = b.name.toUpperCase();
+
+            if (nomeA < nomeB) {
+                return -1;
+            }
+
+            if (nomeA > nomeB) {
+                return 1;
+            }
+
+            return 0;
+        });
+    }
+
+    const loadMorePokemon = () => {
+        if (isLoading) return;
+
+        if (typesFilter.length)
+            loadNotLoadedPokemon();
+        else
+            fetchPokemons();
+    }
+
+    const toggleTypesFilter = async (updatedType: string): Promise<void> => {
+        if (typesFilter.includes(updatedType))
+            typesFilter = typesFilter.filter(type => type !== updatedType);
+        else
+            typesFilter.push(updatedType);
+
+        notLoadedPokemon = [];
+        setPokemons([]);
+
+        if (!typesFilter.length) {
+            lastUrl = null;
+            nextUrl = nextUrlInitialValue;
+            await fetchPokemons();
+            return;
+        }
+
+        await fetchPokemonByTypes();
+        await loadNotLoadedPokemon();
+    }
 
     // Fetch pokemon types
     useEffect(() => {
+        if (typesFetched) return;
+
         (async () => {
             const { data } = await axiosInstance.get<PokemonTypesResponse>("type");
             pokemonTypes = [...data.results];
         })();
+
+        typesFetched = true;
     }, []);
 
     // Fetch pokemons
     useEffect(() => {
-        (async () => {
-            const { data } = await axiosInstance.get<PokemonsResponse>(`pokemon-species?limit=9&offset=${offset}`);
-
-            setPokemonsCount(data.count);
-
-            if (data.next) setHasNext(true);
-            else setHasNext(false);
-
-            const newPokemons: Pokemon[] = [];
-
-            for (const result of data.results) {
-                const newPokemon = await fetchPokemon(result.url);
-                newPokemons.push(newPokemon);
-            }
-
-            setPokemons([...newPokemons]);
-        })();
-    }, [offset]);
+        loadMorePokemon();
+    }, []);
 
     return (
         <PokedexContex.Provider value={{
@@ -119,10 +244,11 @@ const PokedexProvider = ({ children }: PokedexProviderProps) => {
             setShowFilterModal,
             pokemonTypes,
             pokemons,
-            offset,
-            setOffset,
-            hasNext,
             pokemonsCount,
+            limit,
+            toggleTypesFilter,
+            loadMorePokemon,
+            typesFilter
         }}>
             {children}
         </PokedexContex.Provider>

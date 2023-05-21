@@ -5,16 +5,26 @@ import { usePokedex } from "../../../../hooks/contexts/usePokedex";
 import styles from "./index.module.css";
 
 const TypesFilterList = () => {
-    const { pokemonTypes } = usePokedex();
+    const { pokemonTypes, typesFilter, toggleTypesFilter } = usePokedex();
+
+    const onChangeInputHandler = (updatedType: string) => {
+        toggleTypesFilter(updatedType);
+    }
 
     return (
         <ul className={styles.list}>
-            {pokemonTypes.map(pokemonType => (
-                <li key={pokemonType.name} className={styles.listElement}>
-                    <input id={`filter-by-${pokemonType.name}`} type="checkbox" />
-                    <label htmlFor={`filter-by-${pokemonType.name}`}>{pokemonType.name}</label>
-                </li>
-            ))}
+            {pokemonTypes.map(pokemonType => {
+                const onChange = () => onChangeInputHandler(pokemonType.name);
+                const inputId = `filter-by-${pokemonType.name}`;
+                const selected = typesFilter.includes(pokemonType.name);
+
+                return (
+                    <li key={pokemonType.name} className={styles.listElement}>
+                        <input id={inputId} type="checkbox" onChange={onChange} defaultChecked={selected} />
+                        <label htmlFor={inputId}>{pokemonType.name}</label>
+                    </li>
+                )
+            })}
         </ul>
     );
 };

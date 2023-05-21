@@ -2,6 +2,10 @@ export interface PokemonResponse {
     id: number,
     name: string,
     base_experience: number,
+    order: number,
+    species: {
+        url: string
+    },
     types: {
         type: {
             name: string
@@ -38,14 +42,16 @@ export interface PokemonSpecieResponse {
     }[]
 }
 
+export interface PokemonResult {
+    name: string,
+    url: string
+}
+
 export interface PokemonsResponse {
     count: number;
     next: null | string,
     previous: null | string,
-    results: {
-        name: string,
-        url: string
-    }[]
+    results: PokemonResult[]
 }
 
 export interface Pokemon {
@@ -55,6 +61,7 @@ export interface Pokemon {
     abilities: string[],
     image: string,
     generation: string,
+    order: number,
     stats: {
         attack: null | number,
         hp: null | number,

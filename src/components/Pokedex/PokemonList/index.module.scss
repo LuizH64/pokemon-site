@@ -1,10 +1,28 @@
+@use "../../../configs/global-variables"as g;
+
 .list {
     display: flex;
     flex-direction: column;
     gap: 26px;
 
     margin: 0;
-    padding: 0 20px;
+    padding: 20px;
+    padding-top: 0;
 
     list-style: none;
+
+    @media (g.$tablet) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 25px 20px;
+    }
+
+    @media (g.$desktop) {
+        gap: 45px 35px;
+        grid-template-columns: 1fr 1fr 1fr;
+
+        width: 1125px;
+
+        margin: 0 auto;
+    }
 }

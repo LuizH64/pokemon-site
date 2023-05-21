@@ -1,3 +1,6 @@
+// Dependencies
+import { useEffect } from "react";
+
 // Components
 import { PokemonCard } from "./PokemonCard";
 
@@ -8,7 +11,22 @@ import { usePokedex } from "../../../hooks/contexts/usePokedex";
 import styles from "./index.module.css";
 
 const PokemonList = () => {
-    const { pokemons } = usePokedex();
+    const { pokemons, loadMorePokemon } = usePokedex();
+
+    // Verify if user scrolled to end of page
+    useEffect(() => {
+        function handleScroll() {
+            if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+                loadMorePokemon();
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     return (
         <ul className={styles.list}>

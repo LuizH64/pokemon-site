@@ -3,6 +3,22 @@
   flex-direction: column;
   gap: 26px;
   margin: 0;
-  padding: 0 20px;
+  padding: 20px;
+  padding-top: 0;
   list-style: none;
+}
+@media (min-width: 768px) {
+  .list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px 20px;
+  }
+}
+@media (min-width: 1440px) {
+  .list {
+    gap: 45px 35px;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 1125px;
+    margin: 0 auto;
+  }
 }

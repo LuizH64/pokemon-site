@@ -1,3 +1,5 @@
+@use "../../../../configs/global-variables"as g;
+
 .card {
     display: flex;
 
@@ -6,6 +8,7 @@
     border-radius: 8px;
 
     overflow: hidden;
+    cursor: pointer;
 
     .info {
         width: 34%;
