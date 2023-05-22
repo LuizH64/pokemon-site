@@ -1,3 +1,5 @@
+@use "../../../../configs/global-variables"as g;
+
 .card {
     display: flex;
     flex-direction: column;
@@ -13,9 +15,21 @@
     background-color: #FDFDFD;
     box-shadow: 4px 4px 24px rgba(1, 17, 38, 0.2);
 
+    @media (g.$tablet) {
+        width: 69px;
+        height: 59px;
+
+        padding-top: 7px;
+        padding-bottom: 2px;
+    }
+
     .name {
         font-size: 11px;
         font-weight: 400;
+
+        @media (g.$tablet) {
+            font-size: 12px;
+        }
     }
 
     .value {
@@ -25,10 +39,17 @@
 
         width: 35px;
         height: 35px;
-        
+
         border: 3px solid var(--dark);
         border-radius: 50%;
 
         font-size: 18px;
+
+        @media (g.$tablet) {
+            width: 30px;
+            height: 30px;
+
+            font-size: 12px;
+        }
     }
 }

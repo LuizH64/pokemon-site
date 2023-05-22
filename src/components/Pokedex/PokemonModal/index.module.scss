@@ -13,7 +13,6 @@
     padding-bottom: 30px;
 
     border-radius: 16px;
-    overflow: hidden;
 
     @media (g.$tablet) {
         display: flex;
@@ -21,7 +20,7 @@
         align-items: center;
 
         width: 669px;
-        height: 311px;
+        height: auto;
 
         padding: 0;
 
@@ -68,7 +67,7 @@
 
             position: absolute;
             right: 13px;
-            bottom: 13px;
+            bottom: -5px;
 
             @media (g.$mobile) {
                 display: none;
@@ -93,10 +92,9 @@
             gap: 18px;
 
             margin: 0;
-            padding: 0 11px;
-            padding-top: 32px;
+            padding: 32px 11px 21px 11px;
 
-            border-radius: 0;
+            border-radius: 0 16px 16px 0;
         }
 
         .mainInfo {
@@ -181,9 +179,10 @@
 
             background-color: #fdfdfd;
             box-shadow: 4px 4px 4px rgba(33, 33, 33, 0.1);
-            
+
             @media (g.$tablet) {
                 margin: 0;
+                border-radius: 16px;
             }
         }
 
@@ -194,11 +193,23 @@
             }
         }
 
+        .cardStats {
+            display: flex;
+
+            padding: 16px;
+            padding-bottom: 0;
+        }
+
         .abilitiesTitle {
             margin-bottom: 9px;
 
             font-size: 31px;
             font-weight: 400;
+
+            @media (g.$tablet) {
+                margin-bottom: 0;
+                font-size: 16px;
+            }
         }
 
         .abilitiesList {

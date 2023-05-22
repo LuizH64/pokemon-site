@@ -1,6 +1,11 @@
 .wrapper {
   margin-bottom: 20px;
 }
+@media (min-width: 768px) {
+  .wrapper {
+    margin-bottom: 10px;
+  }
+}
 .wrapper .name {
   font-size: 16px;
   font-weight: 400;
@@ -10,12 +15,22 @@
   font-size: 16px;
   font-weight: 700;
 }
+@media (min-width: 768px) {
+  .wrapper .value {
+    margin-bottom: 3px;
+  }
+}
 .wrapper .progressbar {
   position: relative;
   width: 255px;
   height: 8px;
   border-radius: 8px;
   background-color: #f6f7f9;
+}
+@media (min-width: 768px) {
+  .wrapper .progressbar {
+    width: 140px;
+  }
 }
 .wrapper .progressbar .progressGreen,
 .wrapper .progressbar .progressYellow {

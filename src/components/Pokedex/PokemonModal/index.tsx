@@ -27,8 +27,9 @@ const PokemonModal = () => {
             <Backdrop onClick={closeModal} />
 
             <div className={styles.modal} style={{ backgroundColor: getColorByType(pokemonInModal.types[0]) }}>
+                <CloseButton />
+
                 <header className={styles.header}>
-                    <CloseButton />
 
                     <h1 className={styles.pokemonNameMobile}>{pokemonInModal.name}</h1>
 

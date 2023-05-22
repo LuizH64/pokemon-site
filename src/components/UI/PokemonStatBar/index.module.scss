@@ -1,5 +1,11 @@
+@use "../../../configs/global-variables"as g;
+
 .wrapper {
     margin-bottom: 20px;
+
+    @media (g.$tablet) {
+        margin-bottom: 10px;
+    }
 
     .name {
         font-size: 16px;
@@ -11,6 +17,10 @@
 
         font-size: 16px;
         font-weight: 700;
+
+        @media (g.$tablet) {
+            margin-bottom: 3px;
+        }
     }
 
     .progressbar {
@@ -22,6 +32,10 @@
         border-radius: 8px;
 
         background-color: #f6f7f9;
+
+        @media (g.$tablet) {
+            width: 140px;
+        }
 
         .progressGreen,
         .progressYellow {
