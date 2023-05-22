@@ -32,6 +32,11 @@
     width: 140px;
   }
 }
+@media (min-width: 1440px) {
+  .wrapper .progressbar {
+    width: 167px;
+  }
+}
 .wrapper .progressbar .progressGreen,
 .wrapper .progressbar .progressYellow {
   position: absolute;

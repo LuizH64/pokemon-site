@@ -15,3 +15,8 @@
     left: 645px;
   }
 }
+@media (min-width: 1440px) {
+  .closeButton {
+    left: 775px;
+  }
+}

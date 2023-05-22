@@ -23,6 +23,11 @@
         padding-bottom: 2px;
     }
 
+    @media (g.$desktop) {
+        width: 85px;
+        height: 72px;
+    }
+
     .name {
         font-size: 11px;
         font-weight: 400;
@@ -50,6 +55,13 @@
             height: 30px;
 
             font-size: 12px;
+        }
+
+        @media (g.$desktop) {
+            width: 40px;
+            height: 40px;
+
+            font-size: 16px;
         }
     }
 }

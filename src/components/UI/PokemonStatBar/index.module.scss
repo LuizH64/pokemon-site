@@ -37,6 +37,10 @@
             width: 140px;
         }
 
+        @media (g.$desktop) {
+            width: 167px;
+        }
+
         .progressGreen,
         .progressYellow {
             position: absolute;
