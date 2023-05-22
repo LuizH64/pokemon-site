@@ -1,3 +1,6 @@
+// Dependencies
+import { useState } from "react";
+
 // Components
 import { PokemonTypePill } from "../../../UI/PokemonTypePill";
 
@@ -10,16 +13,24 @@ import { getColorByType } from "../../../../helpers/getColorByType";
 // Hooks
 import { usePokedex } from "../../../../hooks/contexts/usePokedex";
 
+// Images
+import whosThatPokemonImage from "../../../../assets/whos-that-pokemon.png";
+
 // Styles
 import styles from "./index.module.css";
 
 
 const PokemonCard = ({ pokemon }: { pokemon: Pokemon }) => {
     const { setPokemonInModal } = usePokedex();
+    const [isImageLoading, setIsImage] = useState<boolean>(true);
 
     const onClickHander = () => {
         setPokemonInModal(pokemon);
-    }
+    };
+
+    const handleImageLoad = () => {
+        setIsImage(false);
+    };
 
     return (
         <li className={styles.card} onClick={onClickHander}>
@@ -46,7 +57,8 @@ const PokemonCard = ({ pokemon }: { pokemon: Pokemon }) => {
             </div>
 
             <div className={styles.imageWrapper} style={{ backgroundColor: getColorByType(pokemon.types[0]) }}>
-                <img src={pokemon.image} alt="" />
+                {isImageLoading && <img src={whosThatPokemonImage} alt="" />}
+                <img src={pokemon.image} className={isImageLoading ? styles.imageLoading : ""} alt="" onLoad={handleImageLoad} />
             </div>
         </li>
     );

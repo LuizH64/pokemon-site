@@ -62,3 +62,7 @@
   width: 160px;
   height: auto;
 }
+.card .imageLoading {
+  position: absolute;
+  opacity: 0;
+}
