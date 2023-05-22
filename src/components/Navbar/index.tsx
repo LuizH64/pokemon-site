@@ -12,19 +12,19 @@ import styles from './index.module.css';
 import logo from "../../assets/logo.svg";
 import hamburgerIcon from "../../assets/hamburger-icon.svg";
 
-const Header = () => {
-    const [expandHeader, setExpandHeader] = useState<boolean>(false);
+const Navbar = () => {
+    const [expandNavbar, setExpandNavbar] = useState<boolean>(false);
 
     const toggleHeader = (): void => {
-        setExpandHeader(prevExpandHeader => !prevExpandHeader);
+        setExpandNavbar(prevExpandNavbar => !prevExpandNavbar);
     };
 
     return (
         <>
-            <nav className={expandHeader ? styles.expandedNavbar : styles.navbar}>
+            <nav className={expandNavbar ? styles.expandedNavbar : styles.navbar}>
                 <img src={logo} className={styles.logo} alt="Pokémon" />
 
-                <NavigationLinks active={expandHeader} />
+                <NavigationLinks active={expandNavbar} />
 
                 <button className={styles.hamburgerButton} onClick={toggleHeader}>
                     <img src={hamburgerIcon} className={styles.hamburgerIcon} alt="Open navigation" />
@@ -32,10 +32,10 @@ const Header = () => {
             </nav>
 
             <div className={styles.navbarHeight}></div>
-            
-            {expandHeader && <Backdrop onClick={toggleHeader} />}
+
+            {expandNavbar && <Backdrop onClick={toggleHeader} />}
         </>
     )
 };
 
-export { Header };
+export { Navbar };

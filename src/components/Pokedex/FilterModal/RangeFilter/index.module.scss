@@ -1,0 +1,55 @@
+.card {
+    width: 310px;
+
+    margin-top: 7px;
+    margin-bottom: 23px;
+    padding: 15px 23px;
+    padding-left: 12px;
+
+    border-radius: 8px;
+
+    background-color: #fdfdfd;
+    filter: drop-shadow(4px 4px 4px rgba(33, 33, 33, 0.1));
+
+    text-align: right;
+
+    .inputs {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+
+        margin-bottom: 20px;
+
+        text-align: left;
+
+        &::after {
+            content: '';
+
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, 8px);
+
+            width: 16px;
+            height: 2px;
+
+            background-color: var(--dark);
+        }
+    }
+
+    .applyButton {
+        padding: 4px 18px;
+
+        border: 0;
+        border-radius: 11px;
+
+        background-color: #73D677;
+
+        font-size: 13px;
+        font-weight: 400;
+        letter-spacing: -0.065em;
+        color: var(--dark);
+
+        cursor: pointer;
+    }
+}

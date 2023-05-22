@@ -1,11 +1,11 @@
 // Components
-import { Header } from "../components/Header";
+import { Navbar } from "../components/Navbar";
 import { LandingPage } from "../components/LandingPage";
 
 const LandingPagePage = () => {
     return (
         <>
-            <Header />
+            <Navbar />
             <LandingPage />
         </>
     );

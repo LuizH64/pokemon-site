@@ -1,0 +1,53 @@
+.wrapper {
+  margin-bottom: 20px;
+}
+@media (min-width: 768px) {
+  .wrapper {
+    margin-bottom: 10px;
+  }
+}
+.wrapper .name {
+  font-size: 16px;
+  font-weight: 400;
+}
+.wrapper .value {
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 700;
+}
+@media (min-width: 768px) {
+  .wrapper .value {
+    margin-bottom: 3px;
+  }
+}
+.wrapper .progressbar {
+  position: relative;
+  width: 255px;
+  height: 8px;
+  border-radius: 8px;
+  background-color: #f6f7f9;
+}
+@media (min-width: 768px) {
+  .wrapper .progressbar {
+    width: 140px;
+  }
+}
+@media (min-width: 1440px) {
+  .wrapper .progressbar {
+    width: 167px;
+  }
+}
+.wrapper .progressbar .progressGreen,
+.wrapper .progressbar .progressYellow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 8px;
+  border-radius: 8px;
+}
+.wrapper .progressbar .progressGreen {
+  background: linear-gradient(270deg, #64D368 0.15%, #64D368 70.88%);
+}
+.wrapper .progressbar .progressYellow {
+  background: linear-gradient(180deg, #F5DB13 0%, #F2B807 100%);
+}

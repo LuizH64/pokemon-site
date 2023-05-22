@@ -1,0 +1,35 @@
+@use "../../../../configs/global-variables"as g;
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    width: 337px;
+    margin: 0 auto;
+
+    overflow-x: hidden;
+
+    color: #a9a9a9;
+
+    @media (g.$tablet) {
+        width: 500px;
+    }
+
+    .title {
+        font-size: 50px;
+    }
+
+    .image {
+        width: 70%;
+        filter: grayscale(80%);
+        opacity: .9;
+    }
+
+    .text {
+        font-size: 26px;
+        font-weight: 600;
+    }
+}
