@@ -1,0 +1,8 @@
+@use '../../../configs/global-variables'as g;
+
+.pokemonGroupWrapper {
+    @media (g.$desktop) {
+        width: 1061px;
+        margin: 0 auto;
+    }
+}

@@ -3,10 +3,16 @@ import axios from "axios";
 import axiosInstance from "../configs/axios";
 import { createContext, useEffect, useState } from "react";
 
+// Helpers
+import formatPokemonData from "../helpers/formatPokemonData";
+
 // Types
 import { PokemonType, PokemonTypesResponse, PokemonsByType } from "../models/PokemonTypes";
 import { Pokemon, PokemonResponse, PokemonResult, PokemonSpecieResponse, PokemonsResponse } from "../models/Pokemon";
-import { FormatPokemonDataTypes, PokedexContextType, PokedexProviderProps } from "../models/Pokedex";
+import { PokedexContextType, PokedexProviderProps } from "../models/Pokedex";
+
+// Utils
+import { fetchPokemon, fetchPokemonBySpecie } from "../utils/fetchPokemon";
 
 
 
@@ -28,57 +34,8 @@ const defaultValues: PokedexContextType = {
 
 export const PokedexContex = createContext(defaultValues);
 
-const formatPokemonData = ({ specieData, pokemonData }: FormatPokemonDataTypes): Pokemon => {
-    const abilities = pokemonData.abilities.map(ability => ability.ability.name);
-    const types = pokemonData.types.map(type => type.type.name);
 
-    const findStatValue = (statName: string): number | null => {
-        return pokemonData.stats.find(stat => {
-            if (stat.stat.name === statName) return stat
-        })?.base_stat ?? null;
-    }
 
-    const attack = findStatValue("attack");
-    const hp = findStatValue("hp");
-    const defense = findStatValue("defense");
-    const spAttack = findStatValue("special-attack");
-    const spDefense = findStatValue("special-defense");
-    const experience = pokemonData.base_experience;
-
-    return {
-        id: pokemonData.id,
-        name: pokemonData.name,
-        types,
-        abilities,
-        image: pokemonData.sprites.other["official-artwork"].front_default,
-        generation: specieData.generation.name,
-        order: pokemonData.order,
-        stats: {
-            attack,
-            hp,
-            defense,
-            spAttack,
-            spDefense,
-            experience
-        }
-    };
-}
-
-const fetchPokemonBySpecie = async (url: string): Promise<Pokemon> => {
-    const specieData = (await axios.get<PokemonSpecieResponse>(url)).data;
-    const pokemonData = (await axios.get<PokemonResponse>(specieData.varieties[0].pokemon.url)).data;
-
-    const pokemon = formatPokemonData({ specieData, pokemonData });
-    return pokemon;
-}
-
-const fetchPokemon = async (url: string): Promise<Pokemon> => {
-    const pokemonData = (await axios.get<PokemonResponse>(url)).data;
-    const specieData = (await axios.get<PokemonSpecieResponse>(pokemonData.species.url)).data;
-
-    const pokemon = formatPokemonData({ specieData, pokemonData });
-    return pokemon;
-}
 
 const limit = 12;
 const nextUrlInitialValue = `https://pokeapi.co/api/v2/pokemon-species?limit=${limit}`;

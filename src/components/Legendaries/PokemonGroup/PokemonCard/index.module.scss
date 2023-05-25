@@ -1,0 +1,84 @@
+@use "../../../../configs/global-variables"as g;
+
+.wrapper {
+    @media (g.$tablet) {
+        display: flex;
+    }
+
+    @media (g.$desktop) {
+        justify-content: space-between;
+    }
+
+    .imageWrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            width: 252px;
+
+            @media (g.$tablet) {
+                width: 283px;
+            }
+
+            @media (g.$desktop) {
+                width: 373px;
+            }
+        }
+    }
+
+    .info {
+        padding: 0 27px;
+
+        @media (g.$tablet) {
+            padding: 0;
+            padding-right: 52px;
+        }
+
+        @media (g.$desktop) {
+            width: 433px;
+        }
+
+        .name {
+            text-transform: capitalize;
+            font-size: 62px;
+            font-weight: 400;
+            letter-spacing: 4px;
+
+            @media (g.$desktop) {
+                font-size: 72px;
+            }
+        }
+
+        .description {
+            font-size: 14px;
+            font-weight: 400;
+            text-align: justify;
+
+            @media (g.$desktop) {
+                font-size: 16px;
+            }
+        }
+
+        .stats {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            padding: 33px 0;
+
+            .statsGroup {
+                display: flex;
+                gap: 12px;
+
+                @media (g.$tablet) {
+                    gap: 8px;
+                }
+    
+                @media (g.$desktop) {
+                    gap: 40px;
+                }
+            }
+        }
+    }
+}

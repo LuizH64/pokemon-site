@@ -5,7 +5,8 @@ interface PokemonStatBarProps {
     name: string,
     value: number,
     max: number,
-    color: "green" | "yellow"
+    color: "green" | "yellow",
+    small: boolean
 }
 
 const progressColors = {
@@ -13,11 +14,11 @@ const progressColors = {
     yellow: styles.progressYellow,
 }
 
-const PokemonStatBar = ({ name, value, max, color }: PokemonStatBarProps) => {
+const PokemonStatBar = ({ name, value, max, color, small }: PokemonStatBarProps) => {
     const percentage = (value * 100) / max;
 
     return (
-        <div className={styles.wrapper}>
+        <div className={small ? styles.smallWrapper : styles.wrapper}>
             <p className={styles.name}>{name}</p>
             <p className={styles.value}>{value}</p>
 

@@ -1,6 +1,7 @@
 @use "../../../configs/global-variables"as g;
 
-.wrapper {
+.wrapper,
+.smallWrapper {
     margin-bottom: 20px;
 
     @media (g.$tablet) {
@@ -59,5 +60,17 @@
         .progressYellow {
             background: linear-gradient(180deg, #F5DB13 0%, #F2B807 100%);
         }
+    }
+}
+
+.smallWrapper .progressbar {
+    width: 155px;
+
+    @media (g.$tablet) {
+        width: 191px;
+    }
+
+    @media (g.$desktop) {
+        width: 167px;
     }
 }
