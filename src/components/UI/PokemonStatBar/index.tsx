@@ -6,7 +6,7 @@ interface PokemonStatBarProps {
     value: number,
     max: number,
     color: "green" | "yellow",
-    small: boolean
+    small?: boolean
 }
 
 const progressColors = {
