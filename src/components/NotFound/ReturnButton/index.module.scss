@@ -1,0 +1,39 @@
+@use "../../../configs//global-variables"as g;
+
+.returnButton {
+    position: relative;
+    display: block;
+    width: 140px;
+    padding-top: 7px;
+    padding-bottom: 12px;
+    border-radius: 11px;
+    background-color: var(--third);
+
+    text-align: center;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--dark);
+
+    box-shadow: inset 0px -9px 0px rgba(0, 0, 0, 0.18);
+    z-index: 1;
+
+    opacity: 0;
+    animation: showUp .8s ease-in 2.5s forwards;
+
+    @media (g.$tablet) {
+        width: 231px;
+        padding-top: 17px;
+        padding-bottom: 17px;
+        font-size: 23px;
+    }
+}
+
+
+@keyframes showUp {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+  }

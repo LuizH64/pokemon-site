@@ -1,10 +1,13 @@
 :root {
+  // Main colors
   --primary: #F2B807;
   --second: #F28F16;
   --third: #F5DB13;
   --danger: #D93E30;
   --white: #F2F2F2;
   --dark: #212121;
+
+  // Pokemon types colors
   --pokemon-steel: #A1A1A1;
   --pokemon-dark: #A1A1A1;
   --pokemon-rock: #A1A1A1;
@@ -23,29 +26,35 @@
   --pokemon-ghost: #A974BC;
   --pokemon-ground: #9B897B;
   --pokemon-electric: #F7C545;
-  --pokemon-gradient-steel: linear-gradient(180deg, #747474 0%, #8a8a8a 100%);
-  --pokemon-gradient-dark: linear-gradient(180deg, #747474 0%, #8a8a8a 100%);
-  --pokemon-gradient-rock: linear-gradient(180deg, #747474 0%, #8a8a8a 100%);
-  --pokemon-gradient-grass: linear-gradient(180deg, #24ac28 0%, #64D368 100%);
-  --pokemon-gradient-bug: linear-gradient(180deg, #24ac28 0%, #64D368 100%);
-  --pokemon-gradient-water: linear-gradient(180deg, #31b9f8 0%, #35BAFF 100%);
-  --pokemon-gradient-ice: linear-gradient(180deg, #31b9f8 0%, #35BAFF 100%);
+
+  // Pokemon gradients
+  --pokemon-gradient-steel: linear-gradient(180deg, #747474  0%, #8a8a8a 100%);
+  --pokemon-gradient-dark: linear-gradient(180deg, #747474  0%, #8a8a8a 100%);
+  --pokemon-gradient-rock: linear-gradient(180deg, #747474  0%, #8a8a8a 100%);
+  --pokemon-gradient-grass: linear-gradient(180deg, #24ac28  0%, #64D368 100%);
+  --pokemon-gradient-bug: linear-gradient(180deg, #24ac28  0%, #64D368 100%);
+  --pokemon-gradient-water: linear-gradient(180deg, #31b9f8  0%, #35BAFF 100%);
+  --pokemon-gradient-ice: linear-gradient(180deg, #31b9f8  0%, #35BAFF 100%);
   --pokemon-gradient-fire: linear-gradient(180deg, #732119 42.19%, #b43d32 100%);
   --pokemon-gradient-fighting: linear-gradient(180deg, #732119 42.19%, #b43d32 100%);
   --pokemon-gradient-dragon: linear-gradient(180deg, #732119 42.19%, #b43d32 100%);
-  --pokemon-gradient-normal: linear-gradient(180deg, #31b9f8 0%, #35BAFF 100%);
-  --pokemon-gradient-gosth: linear-gradient(180deg, #31b9f8 0%, #35BAFF 100%);
-  --pokemon-gradient-poison: linear-gradient(180deg, #9a45b9 0%, #a05fb9 100%);
-  --pokemon-gradient-psychic: linear-gradient(180deg, #9a45b9 0%, #a05fb9 100%);
-  --pokemon-gradient-fairy: linear-gradient(180deg, #fda3b3 0%, #F89EAE 100%);
-  --pokemon-gradient-ghost: linear-gradient(180deg, #fda3b3 0%, #F89EAE 100%);
-  --pokemon-gradient-ground: linear-gradient(180deg, #775b45 0%, #9b816d 100%);
+  --pokemon-gradient-normal: linear-gradient(180deg, #31b9f8  0%, #35BAFF 100%);
+  --pokemon-gradient-gosth: linear-gradient(180deg, #31b9f8  0%, #35BAFF 100%);
+  --pokemon-gradient-poison: linear-gradient(180deg, #9a45b9  0%, #a05fb9 100%);
+  --pokemon-gradient-psychic: linear-gradient(180deg, #9a45b9  0%, #a05fb9 100%);
+  --pokemon-gradient-fairy: linear-gradient(180deg, #fda3b3  0%, #F89EAE 100%);
+  --pokemon-gradient-ghost: linear-gradient(180deg, #fda3b3  0%, #F89EAE 100%);
+  --pokemon-gradient-ground: linear-gradient(180deg, #775b45  0%, #9b816d 100%);
   --pokemon-gradient-electric: linear-gradient(180deg, #e7a600 0%, #e2ba55 100%);
+
+  // Margins
   --margin-1: 120px;
   --margin-2: 96px;
   --margin-3: 80px;
   --margin-4: 64px;
   --margin-5: 32px;
+
+  // Shadows
   --box-shadow: 4px 4px 16px rgba(1, 28, 64, 0.2);
   --shadow-filter-1: drop-shadow(4px 4px 24px rgba(1, 17, 38, 0.2));
   --shadow-filter-2: drop-shadow(4px 4px 20px rgba(1, 28, 64, 0.2));
@@ -60,10 +69,12 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  font-family: "Karla", sans-serif;
-}
-body a {
-  text-decoration: none;
+
+  font-family: 'Karla', sans-serif;
+
+  a {
+    text-decoration: none;
+  }
 }
 
 h1,

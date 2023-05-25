@@ -1,0 +1,70 @@
+.filterMenu {
+    position: absolute;
+    width: 135px;
+    height: 131px;
+    transform: translateY(8px);
+
+    border-radius: 8px;
+    padding: 14px 0;
+
+    box-shadow: 4px 4px 8px rgba(1, 28, 64, 0.2);
+    background-color: #f2f2f2;
+
+    font-size: 16px;
+    font-weight: 400;
+
+    z-index: 3;
+    overflow-y: auto;
+
+    .list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        width: 80px;
+
+        margin: 0 auto;
+        padding: 0;
+
+        list-style: none;
+
+        .listElement {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            font-size: 16px;
+            font-weight: 400;
+            text-transform: capitalize;
+            color: #000;
+
+            label {
+                cursor: pointer;
+            }
+
+            input {
+                position: relative;
+                margin: 0;
+                width: 12px;
+                height: 12px;
+
+                cursor: pointer;
+
+                &:checked {
+                    &::after {
+                        content: '';
+                        display: block;
+                        position: absolute;
+                        width: 11px;
+                        height: 11px;
+
+                        background-color: var(--danger);
+                        left: 50%;
+                        top: 50%;
+                        transform: translate(-50%, -50%);
+                        z-index: 1;
+                    }
+                }
+            }
+        }
+    }
+}

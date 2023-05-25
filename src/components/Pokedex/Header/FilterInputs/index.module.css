@@ -1,0 +1,14 @@
+.filtersWrapper {
+  width: 322px;
+  margin: 0 auto;
+}
+@media (min-width: 768px) {
+  .filtersWrapper {
+    width: 695px;
+  }
+}
+@media (min-width: 1440px) {
+  .filtersWrapper {
+    width: 1088px;
+  }
+}

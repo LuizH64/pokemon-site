@@ -1,0 +1,98 @@
+.mobileTitle,
+.tabletTitle,
+.desktopTitle {
+  text-align: center;
+  font-weight: 400;
+  letter-spacing: 4px;
+  color: #000;
+}
+.mobileTitle strong,
+.tabletTitle strong,
+.desktopTitle strong {
+  font-weight: 700;
+}
+
+.mobileTitle {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 42px;
+}
+@media (min-width: 768px) {
+  .mobileTitle {
+    display: none;
+  }
+}
+
+.tabletTitle {
+  margin-bottom: 6px;
+  font-size: 72px;
+  line-height: 84px;
+}
+@media (max-width: 767px) {
+  .tabletTitle {
+    display: none;
+  }
+}
+@media (min-width: 1440px) {
+  .tabletTitle {
+    display: none;
+  }
+}
+
+.desktopTitle {
+  display: none;
+  text-align: left;
+  margin-bottom: 64px;
+  font-size: 72px;
+  line-height: 84px;
+}
+@media (min-width: 1440px) {
+  .desktopTitle {
+    display: block;
+  }
+}
+
+.mobileDescriptionText,
+.tabletDescriptionText,
+.desktopDescriptionText {
+  text-align: center;
+  font-weight: 400;
+  color: #000;
+}
+
+.mobileDescriptionText {
+  font-size: 24px;
+  line-height: 28px;
+}
+@media (min-width: 768px) {
+  .mobileDescriptionText {
+    display: none;
+  }
+}
+
+.tabletDescriptionText {
+  font-size: 24px;
+  line-height: 28px;
+}
+@media (max-width: 767px) {
+  .tabletDescriptionText {
+    display: none;
+  }
+}
+@media (min-width: 1440px) {
+  .tabletDescriptionText {
+    display: none;
+  }
+}
+
+.desktopDescriptionText {
+  display: none;
+  text-align: left;
+  font-size: 32px;
+  line-height: 37px;
+}
+@media (min-width: 1440px) {
+  .desktopDescriptionText {
+    display: block;
+  }
+}

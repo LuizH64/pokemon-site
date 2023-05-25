@@ -1,0 +1,22 @@
+.closeButton {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  border: 0;
+  background-color: transparent;
+  padding: 0;
+  z-index: 12;
+  cursor: pointer;
+}
+@media (min-width: 768px) {
+  .closeButton {
+    width: 26px;
+    top: -35px;
+    left: 645px;
+  }
+}
+@media (min-width: 1440px) {
+  .closeButton {
+    left: 775px;
+  }
+}

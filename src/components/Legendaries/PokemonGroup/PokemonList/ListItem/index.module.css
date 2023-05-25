@@ -1,0 +1,28 @@
+.listItem {
+  width: 128px;
+  height: 100%;
+  border-radius: 18px;
+  background: linear-gradient(215.78deg, #B57E10 -124.09%, #B57E10 -78.76%, #F9DF7B -35.76%, #FFF3A6 8.4%, #F9DF7B 50.24%, #B57E10 99.06%);
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  cursor: pointer;
+}
+.listItem .imageWrapper {
+  display: flex;
+  justify-content: center;
+}
+.listItem .imageWrapper img {
+  height: 147px;
+}
+.listItem .pokemonName {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 19px;
+  padding-bottom: 12px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #FFFFFF 30.32%, #F5F5F5 100%);
+  z-index: 1;
+  text-transform: capitalize;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--dark);
+}

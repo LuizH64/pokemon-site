@@ -1,0 +1,37 @@
+.input {
+  display: block;
+  width: 322px;
+  margin: 0 auto;
+  margin-bottom: 16px;
+  padding: 9px 18px;
+  border-radius: 40px;
+  border: 0;
+  background-color: #f2f2f2;
+  box-shadow: 4px 4px 4px rgba(33, 33, 33, 0.1);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--dark);
+}
+@media (min-width: 768px) {
+  .input {
+    width: 695px;
+    padding: 10px 20px;
+    box-shadow: 2px 2px 2px rgba(33, 33, 33, 0.1);
+    font-size: 16px;
+  }
+}
+@media (min-width: 1440px) {
+  .input {
+    width: 1088px;
+    padding: 16px 31px;
+    box-shadow: 4px 4px 16px rgba(1, 28, 64, 0.2);
+    font-size: 16px;
+  }
+}
+.input:focus {
+  outline: none;
+}
+.input::placeholder {
+  color: var(--dark);
+  opacity: 0.7;
+}

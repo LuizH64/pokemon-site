@@ -1,0 +1,21 @@
+@use '../../../../configs/global-variables'as g;
+
+.list {
+    display: flex;
+    gap: 30px;
+    height: 200px;
+
+    padding: 0 27px;
+    margin: 0;
+
+    overflow-x: auto;
+    list-style: none;
+
+    @media (g.$desktop) {
+        gap: 43px;
+    }
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}

@@ -1,0 +1,79 @@
+.wrapper,
+.smallWrapper {
+  margin-bottom: 20px;
+}
+@media (min-width: 768px) {
+  .wrapper,
+.smallWrapper {
+    margin-bottom: 10px;
+  }
+}
+.wrapper .name,
+.smallWrapper .name {
+  font-size: 16px;
+  font-weight: 400;
+}
+.wrapper .value,
+.smallWrapper .value {
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 700;
+}
+@media (min-width: 768px) {
+  .wrapper .value,
+.smallWrapper .value {
+    margin-bottom: 3px;
+  }
+}
+.wrapper .progressbar,
+.smallWrapper .progressbar {
+  position: relative;
+  width: 255px;
+  height: 8px;
+  border-radius: 8px;
+  background-color: #f6f7f9;
+}
+@media (min-width: 768px) {
+  .wrapper .progressbar,
+.smallWrapper .progressbar {
+    width: 140px;
+  }
+}
+@media (min-width: 1440px) {
+  .wrapper .progressbar,
+.smallWrapper .progressbar {
+    width: 167px;
+  }
+}
+.wrapper .progressbar .progressGreen,
+.wrapper .progressbar .progressYellow,
+.smallWrapper .progressbar .progressGreen,
+.smallWrapper .progressbar .progressYellow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 8px;
+  border-radius: 8px;
+}
+.wrapper .progressbar .progressGreen,
+.smallWrapper .progressbar .progressGreen {
+  background: linear-gradient(270deg, #64D368 0.15%, #64D368 70.88%);
+}
+.wrapper .progressbar .progressYellow,
+.smallWrapper .progressbar .progressYellow {
+  background: linear-gradient(180deg, #F5DB13 0%, #F2B807 100%);
+}
+
+.smallWrapper .progressbar {
+  width: 155px;
+}
+@media (min-width: 768px) {
+  .smallWrapper .progressbar {
+    width: 191px;
+  }
+}
+@media (min-width: 1440px) {
+  .smallWrapper .progressbar {
+    width: 167px;
+  }
+}

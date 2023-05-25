@@ -1,0 +1,26 @@
+@use "../../../../configs/global-variables"as g;
+
+.closeButton {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+
+    border: 0;
+
+    background-color: transparent;
+    padding: 0;
+
+    z-index: 12;
+
+    cursor: pointer;
+
+    @media (g.$tablet) {
+        width: 26px;
+        top: -35px;
+        left: 645px;
+    }
+
+    @media (g.$desktop) {
+        left: 775px;
+    }
+}

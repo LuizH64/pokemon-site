@@ -1,0 +1,15 @@
+@use '../../../configs/global-variables' as g;
+
+.header {
+    padding: 29px 0;
+
+    @media (g.$tablet) {
+        padding-top: 27px;
+        padding-bottom: 81px;
+    }
+
+    @media (g.$desktop) {
+        padding-top: 73px;
+        padding-bottom: 54px;
+    }
+}
