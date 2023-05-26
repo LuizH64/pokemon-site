@@ -1,4 +1,7 @@
-.list {
+.wrapper {
+  position: relative;
+}
+.wrapper .list {
   display: flex;
   gap: 30px;
   height: 200px;
@@ -6,12 +9,42 @@
   margin: 0;
   overflow-x: auto;
   list-style: none;
+  scroll-behavior: smooth;
 }
 @media (min-width: 1440px) {
-  .list {
+  .wrapper .list {
     gap: 43px;
   }
 }
-.list::-webkit-scrollbar {
+.wrapper .list::-webkit-scrollbar {
   display: none;
+}
+.wrapper .prevButton,
+.wrapper .nextButton {
+  display: none;
+  position: absolute;
+  width: 38px;
+  height: 38px;
+  top: calc(50% - 19px);
+  border: 0;
+  border-top: 8px #fff solid;
+  border-right: 8px #fff solid;
+  border-radius: 6px;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+}
+@media (min-width: 1440px) {
+  .wrapper .prevButton,
+.wrapper .nextButton {
+    display: block;
+  }
+}
+.wrapper .prevButton {
+  transform: rotate(-135deg);
+  left: -38px;
+}
+.wrapper .nextButton {
+  transform: rotate(45deg);
+  right: -38px;
 }
