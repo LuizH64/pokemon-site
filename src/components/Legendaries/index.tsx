@@ -5,7 +5,7 @@ import { PokemonGroup } from './PokemonGroup';
 import styles from './index.module.css';
 
 
-const BASIC_LEGENDARIES = [
+const BASIC_LEGENDARIES: number[] = [
     151,
     150,
     243,
@@ -16,7 +16,7 @@ const BASIC_LEGENDARIES = [
     146,
 ];
 
-const COOLEST_LEGENDARIES = [
+const COOLEST_LEGENDARIES: number[] = [
     716,
     384,
     493,
@@ -28,7 +28,7 @@ const COOLEST_LEGENDARIES = [
     890,
 ];
 
-const MID_LEGENDARIES = [
+const MID_LEGENDARIES: number[] = [
     251,
     250,
     382,
