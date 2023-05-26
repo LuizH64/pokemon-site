@@ -1,6 +1,9 @@
 @use "../../configs/global-variables"as g;
 
 .main {
+    display: flex;
+    flex-direction: column;
+    gap: 43px;
     min-height: calc(100vh - 56px);
 
     padding: 34px 0;
@@ -11,6 +14,10 @@
     @media (g.$tablet) {
         min-height: calc(100vh - 93px);
         overflow-x: hidden;
+    }
+
+    @media (g.$desktop) {
+        gap: 64px;
     }
 
     .title {

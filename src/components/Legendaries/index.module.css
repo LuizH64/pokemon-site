@@ -1,4 +1,7 @@
 .main {
+  display: flex;
+  flex-direction: column;
+  gap: 43px;
   min-height: calc(100vh - 56px);
   padding: 34px 0;
   background-color: #1D1E1D;
@@ -8,6 +11,11 @@
   .main {
     min-height: calc(100vh - 93px);
     overflow-x: hidden;
+  }
+}
+@media (min-width: 1440px) {
+  .main {
+    gap: 64px;
   }
 }
 .main .title {
