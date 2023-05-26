@@ -5,7 +5,7 @@ A website about Pokémon created for study purposes. The [PokeAPI](https://pokea
 To build the application, Node version 18.13.0 was used, along with Yarn as the package manager, and [Vite](https://vitejs.dev) to create and build the application. To run the application locally in a development environment, simply install the external dependencies and use the command `yarn dev`.
 
 ## Usage
-The application is hosted on [Netlify](https://pokemon-client-luiz-h.netlify.app/pokedex), where its functionalities can be accessed.
+The application is hosted on [Netlify](https://pokemon-client-luiz-h.netlify.app/), where its functionalities can be accessed.
 
 ## Layout
 The layout was found on [Figma](https://www.figma.com/community/file/893705420616737018/Pokedex)
