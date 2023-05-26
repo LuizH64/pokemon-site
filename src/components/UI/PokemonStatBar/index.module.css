@@ -77,3 +77,6 @@
     width: 167px;
   }
 }
+.smallWrapper .progressbar > div {
+  transition: width 0.3s;
+}

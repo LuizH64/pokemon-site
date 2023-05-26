@@ -73,4 +73,8 @@
     @media (g.$desktop) {
         width: 167px;
     }
+
+    &>div {
+        transition: width .3s;
+    }
 }
