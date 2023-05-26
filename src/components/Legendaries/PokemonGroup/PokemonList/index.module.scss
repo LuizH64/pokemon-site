@@ -45,6 +45,11 @@
         outline: none;
         cursor: pointer;
 
+        &:disabled {
+            opacity: .2;
+            cursor: default;
+        }
+
         @media (g.$desktop) {
             display: block;
         }
